@@ -1,0 +1,87 @@
+<div class="container">
+  <button
+    class="btn btn-primary"
+    [routerLink]="['addUser']"
+    style="float: right"
+  >
+    Add User
+  </button>
+  <h2>User List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of users; let i = index">
+        <td style="cursor: pointer" (click)="viewUser(data._id)">
+          {{ i + 1 }}
+        </td>
+        <td style="cursor: pointer" (click)="viewUser(data._id)">
+          {{ data.FirstName }} {{ data.LastName }}
+        </td>
+        <td style="cursor: pointer" (click)="viewUser(data._id)">
+          {{ data.address }}
+        </td>
+        <td style="cursor: pointer" (click)="viewUser(data._id)">
+          {{ data.age }}
+        </td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['edit', data._id]">
+            Edit
+          </button>
+
+          <button
+            class="btn btn-danger"
+            (click)="deleteUser(mymodal, data._id)"
+            style="margin-left: 10px"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="users.length === 0" style="text-align: center">
+        <td>
+          <strong>No data found</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">Are you sure want to delete?</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('Save click')"
+    >
+      Yes,delete it!
+    </button>
+    <button
+      type="button"
+      class="btn btn-default"
+      (click)="modal.dismiss('Cross click')"
+      style="padding: 2%"
+    >
+      No,Keep It!
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,61 @@
+<div class="container">
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    class="text-center border border-light p-5"
+  >
+    <p class="h4 mb-4">Add User</p>
+
+    <div class="row mb-4">
+      <div class="col">
+        <input
+          type="text"
+          formControlName="FirstName"
+          id="defaultRegisterFormFirstName"
+          class="form-control"
+          placeholder="First name"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          formControlName="LastName"
+          id="defaultRegisterFormLastName"
+          class="form-control"
+          placeholder="Last name"
+        />
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col">
+        <input
+          type="number"
+          formControlName="age"
+          id="defaultRegisterFormAge"
+          class="form-control"
+          placeholder="Age"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="email"
+          formControlName="email"
+          id="defaultRegisterFormEmail"
+          class="form-control mb-4"
+          placeholder="E-mail"
+        />
+      </div>
+    </div>
+    <div class="mb-4">
+      <textarea
+        formControlName="address"
+        id="defaultRegisterFormAddress"
+        class="form-control"
+        placeholder="Addresss"
+      ></textarea>
+    </div>
+    <button class="btn btn-info my-4 btn-block" type="submit">Save</button>
+
+    <hr />
+  </form>
+</div>
